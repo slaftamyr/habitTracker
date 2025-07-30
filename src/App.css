@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+.glass {
+  background: linear-gradient(120deg, rgba(255,255,255,0.45) 60%, rgba(236,233,254,0.25));
+  box-shadow: 0 6px 32px 0 rgba(31, 38, 135, 0.20);
+  backdrop-filter: blur(18px) saturate(1.2);
+  border: 1.5px solid rgba(255,255,255,0.22);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.dark .glass {
+  background: linear-gradient(120deg, rgba(36,37,41,0.55) 60%, rgba(75,85,99,0.22));
+  box-shadow: 0 6px 32px 0 rgba(31, 38, 135, 0.28);
+  border: 1.5px solid rgba(255,255,255,0.12);
+}
+
+.btn {
+  @apply px-4 py-2 rounded-lg font-semibold shadow-md transition focus:outline-none focus:ring-2 focus:ring-indigo-400;
+  background: linear-gradient(90deg, #f3f4f6 60%, #e0e7ff 100%);
+  color: #3730a3;
+}
+.btn:hover {
+  background: linear-gradient(90deg, #e0e7ff 60%, #f3f4f6 100%);
+  color: #111827;
+}
+.dark .btn {
+  background: linear-gradient(90deg, #1e293b 60%, #6366f1 100%);
+  color: #a5b4fc;
+}
+.dark .btn:hover {
+  background: linear-gradient(90deg, #6366f1 60%, #1e293b 100%);
+  color: #fff;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.7s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  .glass {
+    padding: 1.2rem !important;
+    border-radius: 1.1rem !important;
+  }
+  .btn {
+    font-size: 1rem;
+    padding: 0.7rem 1.1rem;
+  }
+}

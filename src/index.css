@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+body {
+  @apply bg-gradient-to-br from-indigo-100/60 to-slate-200/80 dark:from-slate-900 dark:to-indigo-900 text-gray-900 dark:text-gray-100 font-sans antialiased;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.12);
+  border-radius: 5px;
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 1.02rem;
+  }
+}
