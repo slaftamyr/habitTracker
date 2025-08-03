@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import { useMediaQuery } from 'react-responsive';
 import { getLast7DaysData, getWeeklyData } from "../utils/storage";
 import {
   BarChart,
@@ -14,6 +15,7 @@ import {
 import PropTypes from "prop-types";
 
 export default function Stats({ show, onClose }) {
+  const isMobile = useMediaQuery({ maxWidth: 640 });
   const last7Days = useMemo(() => getLast7DaysData(), []);
 
   const allSessions = JSON.parse(
@@ -126,7 +128,11 @@ export default function Stats({ show, onClose }) {
           </h3>
           <ResponsiveContainer width="100%" height={140}>
             <BarChart data={last7Days}>
-              <XAxis dataKey="date" />
+              <XAxis 
+  dataKey="date"
+  interval={0}
+  tick={{ fontSize: isMobile ? 10 : 12, angle: isMobile ? -30 : 0, dy: isMobile ? 10 : 0 }}
+/>
               <YAxis />
               <Tooltip formatter={(v) => `${v} min`} />
               <CartesianGrid strokeDasharray="3 3" />
@@ -146,9 +152,11 @@ export default function Stats({ show, onClose }) {
           <ResponsiveContainer width="100%" height={140}>
             <BarChart data={monthData}>
               <XAxis
-                dataKey="day"
-                label={{ value: "Day", position: "insideBottom", offset: -5 }}
-              />
+  dataKey="day"
+  label={{ value: "Day", position: "insideBottom", offset: -5 }}
+  interval={isMobile ? 4 : 0}
+  tick={{ fontSize: isMobile ? 9 : 12, angle: isMobile ? -45 : 0, dy: isMobile ? 12 : 0 }}
+/>
               <YAxis />
               <Tooltip formatter={(v) => `${v} min`} />
               <CartesianGrid strokeDasharray="3 3" />
