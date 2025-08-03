@@ -59,19 +59,19 @@ export default function Stats({ show, onClose }) {
     }
   };
   return (
-    <div className="fixed inset-0 bg-black/50 z-50 flex justify-center items-center">
-      <div className="relative bg-white/95 dark:bg-gray-900/95 glass p-6 md:p-10 rounded-3xl shadow-2xl max-w-2xl w-full border border-white/30 dark:border-gray-800/30 overflow-y-auto max-h-[90vh]">
+    <div className="fixed inset-0 bg-black/50 z-50 flex justify-center items-center px-2 sm:px-0">
+      <div className="relative bg-white/95 dark:bg-gray-900/95 glass p-4 sm:p-6 md:p-10 rounded-2xl sm:rounded-3xl shadow-2xl max-w-full sm:max-w-2xl w-full border border-white/30 dark:border-gray-800/30 overflow-y-auto max-h-[95vh]">
         <button
           className="absolute top-4 right-4 btn bg-red-400/70 dark:bg-red-800/70 hover:bg-red-500/80 dark:hover:bg-red-900/80 text-white px-3 py-1 text-lg rounded-full"
           onClick={onClose}
           aria-label="Close stats">
           ✕
         </button>
-        <h2 className="text-3xl font-extrabold mb-6 text-center tracking-tight bg-gradient-to-r from-indigo-500 to-fuchsia-500 bg-clip-text text-transparent">
+        <h2 className="text-2xl sm:text-3xl font-extrabold mb-4 sm:mb-6 text-center tracking-tight bg-gradient-to-r from-indigo-500 to-fuchsia-500 bg-clip-text text-transparent">
           Statistics
         </h2>
-        <div className="mb-4 grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
-          <div className="glass p-4 rounded-xl">
+        <div className="mb-4 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 text-center">
+          <div className="glass p-3 sm:p-4 rounded-lg sm:rounded-xl">
             <div className="text-xl font-bold">
               {allMinutes ? Math.round(allMinutes / 60) : 0} min
             </div>
@@ -79,19 +79,19 @@ export default function Stats({ show, onClose }) {
               All-time Total
             </div>
           </div>
-          <div className="glass p-4 rounded-xl">
+          <div className="glass p-3 sm:p-4 rounded-lg sm:rounded-xl">
             <div className="text-xl font-bold">{totalSessions}</div>
             <div className="text-xs text-gray-600 dark:text-gray-300">
               Total Sessions
             </div>
           </div>
-          <div className="glass p-4 rounded-xl">
+          <div className="glass p-3 sm:p-4 rounded-lg sm:rounded-xl">
             <div className="text-xl font-bold">{totalDays}</div>
             <div className="text-xs text-gray-600 dark:text-gray-300">
               Active Days
             </div>
           </div>
-          <div className="glass p-4 rounded-xl">
+          <div className="glass p-3 sm:p-4 rounded-lg sm:rounded-xl">
             <div className="text-xl font-bold">
               {longestSession ? Math.round(longestSession / 60) : 0} min
             </div>
@@ -99,20 +99,20 @@ export default function Stats({ show, onClose }) {
               Longest Session
             </div>
           </div>
-          <div className="glass p-4 rounded-xl">
+          <div className="glass p-3 sm:p-4 rounded-lg sm:rounded-xl">
             <div className="text-xl font-bold">{maxDay} min</div>
             <div className="text-xs text-gray-600 dark:text-gray-300">
               Best Day (7d)
             </div>
           </div>
-          <div className="glass p-4 rounded-xl col-span-2 md:col-span-3">
+          <div className="glass p-3 sm:p-4 rounded-lg sm:rounded-xl col-span-1 xs:col-span-2 md:col-span-3">
             <div className="text-xl font-bold">{streak} days</div>
             <div className="text-xs text-gray-600 dark:text-gray-300">
               Current Streak
             </div>
           </div>
         </div>
-        <div className="flex gap-3 justify-center mb-4">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center mb-4">
           <button
             className="btn bg-gray-300/80 dark:bg-gray-800/80 hover:bg-gray-400/90 dark:hover:bg-gray-700/90 text-gray-900 dark:text-gray-100 px-4 py-2"
             onClick={handleReset}
@@ -121,10 +121,10 @@ export default function Stats({ show, onClose }) {
           </button>
         </div>
         <div className="mb-8">
-          <h3 className="mb-2 font-semibold text-indigo-700 dark:text-indigo-300">
+          <h3 className="mb-1 sm:mb-2 font-semibold text-base sm:text-lg text-indigo-700 dark:text-indigo-300">
             Daily Reading (Last 7 Days)
           </h3>
-          <ResponsiveContainer width="100%" height={180}>
+          <ResponsiveContainer width="100%" height={140}>
             <BarChart data={last7Days}>
               <XAxis dataKey="date" />
               <YAxis />
@@ -140,10 +140,10 @@ export default function Stats({ show, onClose }) {
           </ResponsiveContainer>
         </div>
         <div>
-          <h3 className="mb-2 font-semibold text-orange-700 dark:text-orange-300">
+          <h3 className="mb-1 sm:mb-2 font-semibold text-base sm:text-lg text-orange-700 dark:text-orange-300">
             Daily Reading (This Month)
           </h3>
-          <ResponsiveContainer width="100%" height={180}>
+          <ResponsiveContainer width="100%" height={140}>
             <BarChart data={monthData}>
               <XAxis
                 dataKey="day"
